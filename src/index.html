@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAROUSEL JAVASCRIPT</title>
+</head>
+
+<body>
+  <main>
+    <section class="carousel">
+      <h1>CAROUSEL JAVASCRIPT</h1>
+      <div class="carousel__wrapper">
+        <p>
+          <i class="carousel__wrapper__arrow-left carousel__wrapper__arrow-prev"></i>
+        </p>
+        <div class="carousel__wrapper__gallery">
+          <ul class="carousel__wrapper__pic">
+            <li><img src="/src/assets/img/cookies.jpg" alt="cookies"
+                class="carousel__wrapper__pic-one carousel__wrapper__pic-all"></li>
+            <li><img src="/src/assets/img/draw.jpg" alt="draw"
+                class="carousel__wrapper__pic-two carousel__wrapper__pic-all">
+            </li>
+            <li><img src="/src/assets/img/ghost.jpg" alt="ghost"
+                class="carousel__wrapper__pic-three carousel__wrapper__pic-all"></li>
+            <li><img src="/src/assets/img/flower.jpg" alt="flower"
+                class="carousel__wrapper__pic-four carousel__wrapper__pic-all"></li>
+            <li><img src="/src/assets/img/hands.jpg" alt="hands"
+                class="carousel__wrapper__pic-five carousel__wrapper__pic-all"></li>
+            <li><img src="/src/assets/img/chupa.jpg" alt="chupa"
+                class="carousel__wrapper__pic-five carousel__wrapper__pic-all"></li>
+          </ul>
+        </div>
+        <p>
+          <i class="carousel__wrapper__arrow-right carousel__wrapper__arrow-next"></i>
+        </p>
+      </div>
+      <div class="carousel__dots">
+        <p class="carousel__dots__one dot">
+          <input type="radio" id="radio-one" name="radio" onclick="currentSlide(1)">
+          <label for="radio-one"></label>
+        </p>
+        <p class="carousel__dots__two dot">
+          <input type="radio" id="radio-two" name="radio" onclick="currentSlide(2)">
+          <label for="radio-two"></label>
+        </p>
+        <p class="carousel__dots__three dot">
+          <input type="radio" id="radio-three" name="radio" onclick="currentSlide(3)">
+          <label for="radio-three"></label>
+        </p>
+        <p class="carousel__dots__four dot">
+          <input type="radio" id="radio-four" name="radio" onclick="currentSlide(4)">
+          <label for="radio-four"></label>
+        </p>
+        <p class="carousel__dots__five dot">
+          <input type="radio" id="radio-five" name="radio" onclick="currentSlide(5)">
+          <label for="radio-five"></label>
+        </p>
+        <p class="carousel__dots__six dot">
+          <input type="radio" id="radio-six" name="radio" onclick="currentSlide(6)">
+          <label for="radio-six"></label>
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
