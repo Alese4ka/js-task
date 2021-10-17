@@ -10,6 +10,9 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
+  devServer: {
+    port: 4200
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: './index.html'
@@ -18,6 +21,10 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']

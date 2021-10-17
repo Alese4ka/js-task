@@ -2,10 +2,11 @@
   "name": "js-task",
   "version": "1.0.0",
   "description": "config webpack",
-  "main": "index.js",
+  "private": "true",
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,14 @@
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.4.0",
+    "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.4.0",
     "style-loader": "^3.3.0",
     "webpack": "^5.58.2",
-    "webpack-cli": "^4.9.0"
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }
