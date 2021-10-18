@@ -5,17 +5,19 @@ let offset = 0;
 let count = 3;
 let position = 372;
 let pic = document.querySelectorAll('.carousel__wrapper__pic-all');
-let dots = document.querySelectorAll('.dot');
 let slider = document.querySelector('.carousel__wrapper__pic');  
+let dots = document.querySelectorAll('.dot');
 const sliderNext = document.querySelector('.carousel__wrapper__arrow-next');  
-const sliderPrev = document.querySelector('.carousel__wrapper__arrow-prev');    
-
+const sliderPrev = document.querySelector('.carousel__wrapper__arrow-prev');  
 let mediaQuery = window.matchMedia('(max-width: 768px)');
 let slideIndex = 1;
+
 showSlides(slideIndex);
 
 sliderNext.addEventListener('click', () => nextSlide());
 sliderPrev.addEventListener('click', () => previousSlide());
+
+[...dots].forEach((f, n) => f.onclick = () => currentSlide(n + 1));
 
 function nextSlide(n) {
   showSlides(slideIndex += 1);
@@ -113,3 +115,6 @@ document.addEventListener('touchend', function(event) {
     }
   }
 }, false);
+
+
+
