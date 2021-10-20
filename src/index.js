@@ -1,5 +1,7 @@
 import './style.css';
+import './js2-style.css';
 import './index.html';
+import './js2-index.js';
 
 let offset = 0; 
 let count = 3;

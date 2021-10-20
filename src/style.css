@@ -11,6 +11,7 @@ h1 {
 .carousel {
   position: relative;
   margin: 1rem auto;
+  margin-bottom: 4rem;
   width: 80rem;
   padding: 0.5rem 3rem;
   border: 1px solid #ccc;
