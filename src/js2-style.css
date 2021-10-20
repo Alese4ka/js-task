@@ -23,16 +23,18 @@ h2 {
   padding: 1rem;
 }
 .calculator__wrapper > div {
+  cursor: pointer;
   border-radius: 1.125rem;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(220, 220, 220);
 }
-.item1 {
+.calculator__result {
+  background-color: rgb(220, 220, 220);
   border: 0.17rem solid black;
   margin-left: 0.3rem;
   margin-top: 0.3rem;
   grid-column: 1/4;
 }
-.arrow {
+.calculator__arrow {
   width: 1rem;
   height: 1rem;
   transform: rotate(137deg);
