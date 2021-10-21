@@ -22,8 +22,9 @@ h2 {
   text-align: center;
   padding: 1rem;
 }
-.calculator__wrapper > div {
+.calculator__wrapper > button {
   cursor: pointer;
+  border: none;
   border-radius: 1.125rem;
   background-color: rgb(220, 220, 220);
 }
@@ -33,6 +34,11 @@ h2 {
   margin-left: 0.3rem;
   margin-top: 0.3rem;
   grid-column: 1/4;
+}
+.calculator__wrapper > div {
+  cursor: pointer;
+  border-radius: 1.125rem;
+  background-color: rgb(220, 220, 220);
 }
 .calculator__arrow {
   width: 1rem;
