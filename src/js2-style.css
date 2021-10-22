@@ -16,7 +16,7 @@ h2 {
   border-radius: 1rem;
   display: grid;
   grid-template-columns: 5rem 5rem 5rem 5rem;
-  grid-template-rows: 5rem 5rem 5rem 5rem 5rem;
+  grid-template-rows: 5rem 5rem 5rem 5rem 5rem 5rem;
   font-size: 4rem;
   grid-gap: 1.25rem;
   text-align: center;
@@ -44,4 +44,7 @@ h2 {
   width: 1rem;
   height: 1rem;
   transform: rotate(137deg);
+}
+.full {
+  grid-column: 1/5;
 }
