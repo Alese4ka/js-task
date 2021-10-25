@@ -82,21 +82,19 @@ function calcNumber() {
   }
 }
 
-var type_to = w =>{
+let type_to = () =>{
+  let w = ''
   if (resultNumbers.value == ""){
     resultNumbers.value = w;
   } 
   else if (resultNumbers.value.length <= 23){
     resultNumbers.value = resultNumbers.value + w;
 }
-  else{
-      alert("Digit limit reached");
-  }
 }
 
 //Function to get the inputs and show the result on the calculator result screen
-var set_ans = () => {
-  var write1 = resultNumbers.value;
+let set_ans = () => {
+  let write1 = resultNumbers.value;
   if (write1.indexOf("%") == -1){
       if (write1.indexOf("X") != -1) {
           write1 = write1.replace("X", "*");
@@ -104,25 +102,25 @@ var set_ans = () => {
   } else{
       write1 = write1.replace("%", "");
       if (write1.indexOf("X") != -1) {
-          var write1_ar = write1.split("X");
-          var total = eval(write1_ar[0]);
-          var need = eval(write1_ar[1]);
+          let write1_ar = write1.split("X");
+          let total = eval(write1_ar[0]);
+          let need = eval(write1_ar[1]);
           write1 = (need / 100) * total;
       } else{
           alert("Math error: Percent without multiplication.");
       }
   }
-  var res = eval(write1);
+  let res = eval(write1);
   resultNumbers.value = res;
 }
 
 //Function to clear the entire calculator screen
-var screen_reset = () =>{
+let screen_reset = () =>{
   resultNumbers.value = "";
 }
 
 //Function to clear the calculator screen one by one
-var erase_screen = () =>{
-  var init = resultNumbers.value.substr(0, resultNumbers.value.length - 1);
+let erase_screen = () =>{
+  let init = resultNumbers.value.substr(0, resultNumbers.value.length - 1);
   resultNumbers.value = init;
 }
