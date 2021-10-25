@@ -21,7 +21,7 @@ wrapper.onclick = function(event) {
   resultNumbers.value = '';
   resultNumbers.value = a + number.value;
   a += number.value;
-  console.log(typeof a)
+  //console.log(typeof a)
 }
 
 function clearResult() {
@@ -37,15 +37,92 @@ function deleteLastNumber(){
 function calcNumber() {
   let w = eval(a);
   resultNumbers.value = w;
-  a = '';
+  a = w;
 }
 
-wrapper.addEventListener('keydown', (e) => {
-  if(e.code > '45' || e.code < '65') {
-    console.log('eval')
+ wrapper.onkeyup = e => {
+  if(e.key == "0" || e.key == "Num0"){
+      type_to(0);
+  } else if(e.key == "1" || e.key == "Num1"){
+      type_to(1);
+  } else if (e.key == "2" || e.key == "Num2") {
+      type_to(2);
+  } else if (e.key == "3" || e.key == "Num3") {
+      type_(3);
+  } else if (e.key == "4" || e.key == "Num4") {
+      type_to(4);
+  } else if (e.key == "5" || e.key == "Num5") {
+      type_to(5);
+  } else if (e.key == "6" || e.key == "Num6") {
+      type_to(6);
+  } else if (e.key == "7" || e.key == "Num7") {
+      type_to(7);
+  } else if (e.key == "8" || e.key == "Num8") {
+      type_to(8);
+  } else if (e.key == "9" || e.key == "Num9") {
+      type_to(9);
+  } else if (e.key == "+" || e.key == "Num+") {
+      type_to("+");
+  } else if (e.key == "-" || e.key == "Num-") {
+      type_to("-");
+  } else if (e.key == "*" || e.key == "Num*") {
+      type_to("X");
+  } else if (e.key == "/" || e.key == "Num/") {
+      type_to("/");
+  } else if (e.key == "%") {
+      type_to("%");
+  } else if (e.key == "." || e.key == "Num.") {
+      type_to(".");
+  } else if(e.key == "Enter" || e.key == "NumEnter"){
+      set_ans();
+  } else if (e.key == "Backspace") {
+      erase_screen();
+  } else if (e.key == "Delete" || e.key == "Escape") {
+      screen_reset();
+  }
+}
 
-    }
-    else {
-      console.log('!')
-    }
-  })
+var type_to = w =>{
+  if (resultNumbers.value == ""){
+    resultNumbers.value = w;
+  } 
+  else if (resultNumbers.value.length <= 23){
+    resultNumbers.value = resultNumbers.value + w;
+}
+  else{
+      alert("Digit limit reached");
+  }
+}
+
+//Function to get the inputs and show the result on the calculator result screen
+var set_ans = () => {
+  var write1 = resultNumbers.value;
+  if (write1.indexOf("%") == -1){
+      if (write1.indexOf("X") != -1) {
+          write1 = write1.replace("X", "*");
+      }
+  } else{
+      write1 = write1.replace("%", "");
+      if (write1.indexOf("X") != -1) {
+          var write1_ar = write1.split("X");
+          var total = eval(write1_ar[0]);
+          var need = eval(write1_ar[1]);
+          write1 = (need / 100) * total;
+      } else{
+          alert("Math error: Percent without multiplication.");
+      }
+  }
+  var res = eval(write1);
+  resultNumbers.value = res;
+}
+
+//Function to clear the entire calculator screen
+var screen_reset = () =>{
+  resultNumbers.value = "";
+}
+
+//Function to clear the calculator screen one by one
+var erase_screen = () =>{
+  var init = resultNumbers.value.substr(0, resultNumbers.value.length - 1);
+  resultNumbers.value = init;
+}
