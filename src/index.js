@@ -1,4 +1,5 @@
 import './style.css';
+import './scss.scss';
 import './js2-style.css';
 import './index.html';
 import './js2-index.js';
