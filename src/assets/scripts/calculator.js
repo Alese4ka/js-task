@@ -8,51 +8,69 @@ clear.addEventListener('click', () => clearResult());
 equally.addEventListener('click', () => calcNumber());
 deleteLastN.addEventListener('click', () => deleteLastNumber());
 
-let allResult = '';
-
 wrapper.onclick = function(event) {
   let number = event.target.closest('button'); 
   if (!number) return; 
   if (!wrapper.contains(number)) return; 
-  resultNumbers.value = '';
-  resultNumbers.value = allResult + number.value;
-  allResult += number.value;
+  if (resultNumbers.value === '') {
+    if (number.value !== '/' && number.value !== '+' && number.value !== '*' && number.value !== '.') {
+      resultNumbers.value = '';
+      resultNumbers.value = resultNumbers.value + number.value;
+    } else if (number.value === '.') {
+      resultNumbers.value = '';
+      resultNumbers.value = 0 + resultNumbers.value;
+      resultNumbers.value += number.value;
+    }  
+  } else if (resultNumbers.value !== '' && resultNumbers.value.indexOf('.') >= 0 && resultNumbers.value.includes('+') || resultNumbers.value.includes('-') || resultNumbers.value.includes('*') || resultNumbers.value.includes('/')) {
+    resultNumbers.value = resultNumbers.value + number.value;
+  } else if(number.value === '.' && resultNumbers.value.indexOf('.') >= 0){
+    return;
+  } else {
+    resultNumbers.value = resultNumbers.value + number.value;
+  }
 }
 
 function clearResult() {
   resultNumbers.value = '';
-  allResult = '';
 }
 
 function deleteLastNumber() {
   let clearResult = resultNumbers.value.substr(0, resultNumbers.value.length - 1);
   resultNumbers.value =  clearResult;
-  allResult = '';
 }
 
 function calcNumber() {
-  let lastResult = eval(allResult);
+  let lastResult = eval(resultNumbers.value).toFixed(5);
   resultNumbers.value = lastResult;
-  allResult = lastResult;
 }
 
  wrapper.onkeyup = e => {
-  if(e.key == "Enter" || e.key == "NumEnter"){
+  if (e.key == 'Enter' || e.key == 'NumEnter') {
     setAns();
+  } else if (e.target.nodeName == 'INPUT') {
+    if (resultNumbers.value !== '/' && resultNumbers.value !== '+' && resultNumbers.value !== '*' && resultNumbers.value !== '.') {
+      typeTo();
+    } else if (resultNumbers.value === '.') {
+      resultNumbers.value = 0 + resultNumbers.value;
+      /*if (resultNumbers.value === '.' && resultNumbers.value.includes('.')) {
+        return;
+      }*/
+    } else {
+      resultNumbers.value = '';
+    }
   }
 }
 
 let typeTo = () =>{
-  if (resultNumbers.value == ""){
-    resultNumbers.value = allResult;
-  } 
-  else if (resultNumbers.value.length <= 23){
-    resultNumbers.value = resultNumbers.value + allResult;
+  if (resultNumbers.value == ''){
+    resultNumbers.value;
+  } else if (resultNumbers.value.length <= 23){
+    resultNumbers.value = resultNumbers.value
   }
 }
 
 let setAns = () => {
   let writeNumber = resultNumbers.value;
-  let lastResult = eval(writeNumber);
+  let lastResult = eval(writeNumber).toFixed(5);
   resultNumbers.value = lastResult;
 }
