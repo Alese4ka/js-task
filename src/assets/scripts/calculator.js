@@ -12,7 +12,7 @@ wrapper.onclick = function(event) {
   let number = event.target.closest('button'); 
   if (!number) return; 
   if (!wrapper.contains(number)) return; 
-  if (resultNumbers.value === '') {
+   if (resultNumbers.value === '') {
     if (number.value !== '/' && number.value !== '+' && number.value !== '*' && number.value !== '.') {
       resultNumbers.value = '';
       resultNumbers.value = resultNumbers.value + number.value;
@@ -21,12 +21,12 @@ wrapper.onclick = function(event) {
       resultNumbers.value = 0 + resultNumbers.value;
       resultNumbers.value += number.value;
     }  
-  } else if (resultNumbers.value !== '' && resultNumbers.value.indexOf('.') >= 0 && resultNumbers.value.includes('+') || resultNumbers.value.includes('-') || resultNumbers.value.includes('*') || resultNumbers.value.includes('/')) {
-    resultNumbers.value = resultNumbers.value + number.value;
+  } else if (number.value === '.' && resultNumbers.value.includes('.') && resultNumbers.value.includes('+') || resultNumbers.value.includes('-') || resultNumbers.value.includes('*') || resultNumbers.value.includes('/')) {
+      resultNumbers.value = resultNumbers.value + number.value;
   } else if(number.value === '.' && resultNumbers.value.indexOf('.') >= 0){
-    return;
+      return;
   } else {
-    resultNumbers.value = resultNumbers.value + number.value;
+      resultNumbers.value = resultNumbers.value + number.value;
   }
 }
 
@@ -50,13 +50,12 @@ function calcNumber() {
   } else if (e.target.nodeName == 'INPUT') {
     if (resultNumbers.value !== '/' && resultNumbers.value !== '+' && resultNumbers.value !== '*' && resultNumbers.value !== '.') {
       typeTo();
-    } else if (resultNumbers.value === '.') {
-      resultNumbers.value = 0 + resultNumbers.value;
-      /*if (resultNumbers.value === '.' && resultNumbers.value.includes('.')) {
+    } else if (e.key === '.') {
+        resultNumbers.value = 0 + resultNumbers.value;
+    } else if(e.key === '.' && resultNumbers.value.indexOf('.') >= 0){
         return;
-      }*/
     } else {
-      resultNumbers.value = '';
+        resultNumbers.value = '';
     }
   }
 }
