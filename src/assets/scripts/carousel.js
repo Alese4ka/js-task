@@ -1,5 +1,3 @@
-import './style.css';
-import './index.html';
 
 let offset = 0; 
 let count = 3;
