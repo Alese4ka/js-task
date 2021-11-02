@@ -92,6 +92,34 @@
         <div id="calculator__equally" class="full" value="=">=</div>
       </div>
     </section>
+
+    <section class="pomodoro">
+      <div class="pomodoro__info">
+        <h2>Таймер</h2>
+        <h2>Перерыв</h2>
+      </div>
+      <div class="pomodoro__clock">
+        <div class="pomodoro__clock__timer">
+          <button type="button" class="pomodoro__clock__timer-minus"
+            onclick="this.nextElementSibling.stepDown()">-</button>
+          <input type="number" min="0" max="60" value="1" readonly class="pomodoro__clock__timer-minutes">
+          <button type="button" class="pomodoro__clock__timer-plus"
+            onclick="this.previousElementSibling.stepUp()">+</button>
+        </div>
+        <div class="pomodoro__clock__break">
+          <button class="pomodoro__clock__break-minus">-</button>
+          <div class="pomodoro__clock__break-minutes">0</div>
+          <button class="pomodoro__clock__break-plus">+</button>
+        </div>
+      </div>
+      <div class="pomodoro__buttons">
+        <button class="pomodoro__buttons-stop">Сброс</button>
+        <button class="pomodoro__buttons-start">Старт</button>
+      </div>
+      <div class="pomodoro__time">
+        <time>1:00</time>
+      </div>
+    </section>
   </main>
 </body>
 
