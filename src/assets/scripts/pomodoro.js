@@ -4,48 +4,80 @@ const startBtn = document.querySelector('.pomodoro__buttons-start');
 const stopBtn = document.querySelector('.pomodoro__buttons-stop');
 const timerClock = document.querySelector('.pomodoro__time-clock');
 
-//Добавить паузу
-//Добавить сигнал
-//Сделать новый таймер внутри
+//Добавить паузу -
+//Добавить стоп +-
 
 startBtn.addEventListener('click', function() {
   timeMinute = parseInt(timeToWork.value) * 60;
 })
 
-function timerBreak(){
-  setInterval(function () {
-  timeMinuteBreak = parseInt(timeToBreak.value) * 60;
-  seconds = Math.floor(timeMinuteBreak%60);
-  minutes = Math.floor(timeMinuteBreak/60%60);
-  if (timeMinuteBreak <= 0) {
-      clearInterval(timerBreak);
-  } else if (seconds < 10) {
-    let strTimer = `${minutes}:0${seconds}`;
-    timerClock.innerHTML = strTimer;
-  }
-  else {
-      let strTimer = `${minutes}:${seconds}`;
-      timerClock.innerHTML = strTimer;
-  }
-  --timeMinuteBreak;
-}, 1000);
-}
+const sound = document.getElementById("ado");
 
 timer = setInterval(function () {
   seconds = Math.floor(timeMinute%60);
   minutes = Math.floor(timeMinute/60%60);
   if (timeMinute <= 0) {
-    timerBreak();
+    clearInterval(timer);
+    sound.play();
+    timeMinuteBreak = parseInt(timeToBreak.value) * 60;
+    timer = setInterval(function () {
+      seconds = Math.floor(timeMinuteBreak%60);
+      minutes = Math.floor(timeMinuteBreak/60%60);
+      if (timeMinuteBreak <= 0) {
+        clearInterval(timer);
+        sound.play();
+        timer = setInterval(function () {
+          seconds = Math.floor(timeMinute%60);
+          minutes = Math.floor(timeMinute/60%60);
+          if (timeMinute <= 0) {
+            clearInterval(timer);
+            sound.play();
+            timeMinuteBreak = parseInt(timeToBreak.value) * 60;
+            setInterval(function () {
+              seconds = Math.floor(timeMinuteBreak%60);
+              minutes = Math.floor(timeMinuteBreak/60%60);
+              if (timeMinuteBreak <= 0) {
+                timer;
+              } else if (seconds < 10) {
+                let strTimer = `${minutes}:0${seconds}`;
+                timerClock.innerHTML = strTimer;
+              }
+              else {
+                  let strTimer = `${minutes}:${seconds}`;
+                  timerClock.innerHTML = strTimer;
+              }
+              --timeMinuteBreak;
+            }, 1000);
+          } else if (seconds < 10) {
+            let strTimer = `${minutes}:0${seconds}`;
+            timerClock.innerHTML = strTimer;
+          }
+          else {
+            let strTimer = `${minutes}:${seconds}`;
+            timerClock.innerHTML = strTimer;
+          }
+          --timeMinute; 
+        }, 1000)
+      } else if (seconds < 10) {
+        let strTimer = `${minutes}:0${seconds}`;
+        timerClock.innerHTML = strTimer;
+      }
+      else {
+          let strTimer = `${minutes}:${seconds}`;
+          timerClock.innerHTML = strTimer;
+      }
+      --timeMinuteBreak;
+    }, 1000);
   } else if (seconds < 10) {
     let strTimer = `${minutes}:0${seconds}`;
     timerClock.innerHTML = strTimer;
   }
   else {
-      let strTimer = `${minutes}:${seconds}`;
-      timerClock.innerHTML = strTimer;
+    let strTimer = `${minutes}:${seconds}`;
+    timerClock.innerHTML = strTimer;
   }
   --timeMinute; 
-}, 1000)
+}, 1000);
 
 stopBtn.addEventListener('click', function() {
   clearInterval(timer);

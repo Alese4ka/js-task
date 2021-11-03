@@ -32,7 +32,7 @@
       @extend %flex-element;
       .pomodoro__clock__timer-minutes {
         font-size: 3rem;
-        padding: 6rem 7rem;
+        padding: 5.5rem 4.5rem 5.5rem 6rem;
         border-radius: 50%;
         border: 0.25rem solid rgb(126, 126, 126);
         margin: 0 1rem;
@@ -43,7 +43,7 @@
       color: rgb(126, 126, 126);
       .pomodoro__clock__break-minutes {
         font-size: 3rem;
-        padding: 6rem 7rem;
+        padding: 5.5rem 4.5rem 5.5rem 6rem;
         border-radius: 50%;
         border: 0.25rem solid rgb(126, 126, 126);
         margin: 0 1rem;
