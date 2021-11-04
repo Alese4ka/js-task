@@ -3,22 +3,28 @@
   justify-content: space-around;
   align-items: center;
 }
+%buttons-style {
+  border-radius: 5%;
+  margin-right: 1rem;
+  color: white;
+  padding: 1rem 2rem;
+}
 .pomodoro {
   background-color: rgb(252, 252, 252);
-  width: 80rem;
+  width: 45rem;
   margin: 2rem auto;
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   button {
-    font-size: 3rem;
+    font-size: 1.5rem;
     border: none;
     color: rgb(126, 126, 126);
     background-color: rgb(252, 252, 252);
   }
   &__info {
     @extend %flex-element;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     h2 {
       font-size: 2rem;
       text-transform: uppercase;
@@ -26,13 +32,13 @@
   }
   &__clock {
     @extend %flex-element;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: rgb(255, 94, 0);
     .pomodoro__clock__timer {
       @extend %flex-element;
       .pomodoro__clock__timer-minutes {
-        font-size: 3rem;
-        padding: 5.5rem 4.5rem 5.5rem 6rem;
+        font-size: 2rem;
+        padding: 2.5rem 1.5rem 2.5rem 3rem;
         border-radius: 50%;
         border: 0.25rem solid rgb(126, 126, 126);
         margin: 0 1rem;
@@ -42,8 +48,8 @@
       @extend %flex-element;
       color: rgb(126, 126, 126);
       .pomodoro__clock__break-minutes {
-        font-size: 3rem;
-        padding: 5.5rem 4.5rem 5.5rem 6rem;
+        font-size: 2rem;
+        padding: 2.5rem 1.5rem 2.5rem 3rem;
         border-radius: 50%;
         border: 0.25rem solid rgb(126, 126, 126);
         margin: 0 1rem;
@@ -53,30 +59,27 @@
   &__buttons {
     @extend %flex-element;
     justify-content: center;
-    margin-bottom: 3rem;
-    .pomodoro__buttons-pause {
-      border-radius: 5%;
-      margin-right: 1rem;
-      color: black;
+    margin: 2rem 0;
+    .pomodoro__buttons-start {
+      @extend %buttons-style;
       background-color: rgb(73, 73, 242);
-      padding: 1rem 2rem;
     }
-    .pomodoro__buttons-start,
-    .pomodoro__buttons-resume {
-      border-radius: 5%;
-      margin-right: 1rem;
-      color: black;
-      background-color: rgb(255, 94, 0);
-      padding: 1rem 2rem;
+    .pomodoro__buttons-stop {
+      @extend %buttons-style;
+      background-color: rgb(104, 104, 244);
+    }
+    .pomodoro__buttons-delete {
+      @extend %buttons-style;
+      background-color: rgb(152, 152, 228);
     }
   }
   &__time {
     @extend %flex-element;
     flex: 1 1 auto;
     time {
-      font-size: 3rem;
+      font-size: 2rem;
       color: rgb(255, 94, 0);
-      padding: 6rem 5.5rem;
+      padding: 3rem 2.5rem;
       border-radius: 50%;
       border: 0.5rem solid rgb(255, 94, 0);
       margin: 0 1rem;
