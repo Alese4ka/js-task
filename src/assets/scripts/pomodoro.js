@@ -9,17 +9,14 @@ const sound = document.getElementById('sound');
 let timeMinute;
 let timer;
 
-timeMinute = parseInt(timeToWork.value) * 60;
-
-function startTimer(timeMinute){
-  timer = setInterval(function( ){
+function startTimerWork(){
     seconds = Math.floor(timeMinute%60);
     minutes = Math.floor(timeMinute/60%60);
     if (timeMinute <= 0) {
       clearInterval(timer);
       sound.play();
-      timeMinute = parseInt(timeToBreak.value) * 60;
-      startTimer(timeMinute);
+      timeMinuteBreak = parseInt(timeToBreak.value) * 60;
+      timer = setInterval(startTimerBreak, 1000);
     } else if (seconds < 10) {
       let strTimer = `${minutes}:0${seconds}`;
       timerClock.innerHTML = strTimer;
@@ -28,19 +25,40 @@ function startTimer(timeMinute){
       let strTimer = `${minutes}:${seconds}`;
       timerClock.innerHTML = strTimer;
     }
-    --timeMinute; 
-  }, 1000);
+    --timeMinute;
+}
+
+function startTimerBreak() {
+  seconds = Math.floor(timeMinuteBreak%60);
+  minutes = Math.floor(timeMinuteBreak/60%60);
+  if (timeMinuteBreak <= 0) {
+    clearInterval(timer);
+    sound.play();
+    timeMinute = parseInt(timeToWork.value) * 60;
+    timer = setInterval(startTimerWork, 1000);
+  } else if (seconds < 10) {
+    let strTimer = `${minutes}:0${seconds}`;
+    timerClock.innerHTML = strTimer;
+  }
+  else {
+    let strTimer = `${minutes}:${seconds}`;
+    timerClock.innerHTML = strTimer;
+  }
+  --timeMinuteBreak;
 }
 
 stopBtn.addEventListener('click', function() {
   clearInterval(timer);
 })
 
+timeMinute = parseInt(timeToWork.value) * 60;
+
 startBtn.addEventListener('click', function() {
-  startTimer(timeMinute);
+  timer = setInterval(startTimerWork, 1000);
 })
 
 deleteBtn.addEventListener('click', function() {
   clearInterval(timer);
+  timeMinute = parseInt(timeToWork.value) * 60;
   timerClock.innerHTML = `${timeToWork.value}:00`;
 })
