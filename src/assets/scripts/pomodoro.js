@@ -54,6 +54,8 @@ stopBtn.addEventListener('click', function() {
 timeMinute = parseInt(timeToWork.value) * 60;
 
 startBtn.addEventListener('click', function() {
+  sound.load(); 
+  sound.play();
   timer = setInterval(startTimerWork, 1000);
 })
 
