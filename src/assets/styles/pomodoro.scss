@@ -36,22 +36,35 @@
     color: rgb(255, 94, 0);
     .pomodoro__clock__timer {
       @extend %flex-element;
+      input[type="number"] {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+        appearance: textfield;
+      }
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        display: none;
+      }
       .pomodoro__clock__timer-minutes {
         font-size: 2rem;
-        padding: 2.5rem 1.5rem 2.5rem 3rem;
-        border-radius: 50%;
-        border: 0.25rem solid rgb(126, 126, 126);
         margin: 0 1rem;
       }
     }
     .pomodoro__clock__break {
       @extend %flex-element;
       color: rgb(126, 126, 126);
+      input[type="number"] {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+        appearance: textfield;
+      }
+
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        display: none;
+      }
       .pomodoro__clock__break-minutes {
         font-size: 2rem;
-        padding: 2.5rem 1.5rem 2.5rem 3rem;
-        border-radius: 50%;
-        border: 0.25rem solid rgb(126, 126, 126);
         margin: 0 1rem;
       }
     }
