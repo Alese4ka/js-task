@@ -9,6 +9,27 @@ const sound = document.getElementById('sound');
 let timeMinute;
 let timer;
 
+//timeMinute = parseInt(timeToWork.value) * 60;
+
+startBtn.addEventListener('click', function() {
+  sound.load(); 
+  sound.play();
+  timeMinute = parseInt(timeToWork.value) * 60;
+  timer = setInterval(startTimerWork, 1000);
+})
+
+stopBtn.addEventListener('click', function() {
+  clearInterval(timer);
+  startBtn.disabled = false;
+})
+
+deleteBtn.addEventListener('click', function() {
+  clearInterval(timer);
+  timeMinute = parseInt(timeToWork.value) * 60;
+  timerClock.innerHTML = `${timeToWork.value}:00`;
+  startBtn.disabled = false;
+})
+
 function startTimerWork(){
   startBtn.disabled = true;
   seconds = Math.floor(timeMinute%60);
@@ -49,21 +70,3 @@ function startTimerBreak() {
 }
 
 
-stopBtn.addEventListener('click', function() {
-  clearInterval(timer);
-  startBtn.disabled = false;
-})
-
-startBtn.addEventListener('click', function() {
-  sound.load(); 
-  sound.play();
-  timeMinute = parseInt(timeToWork.value) * 60;
-  timer = setInterval(startTimerWork, 1000);
-})
-
-deleteBtn.addEventListener('click', function() {
-  clearInterval(timer);
-  timeMinute = parseInt(timeToWork.value) * 60;
-  timerClock.innerHTML = `${timeToWork.value}:00`;
-  startBtn.disabled = false;
-})
