@@ -8,19 +8,23 @@ const sound = document.getElementById('sound');
 
 let timeMinute;
 let timer;
-
-//timeMinute = parseInt(timeToWork.value) * 60;
+let workStatus = true;
 
 startBtn.addEventListener('click', function() {
   sound.load(); 
   sound.play();
-  timeMinute = parseInt(timeToWork.value) * 60;
-  timer = setInterval(startTimerWork, 1000);
+  if (workStatus == true) {
+    timeMinute = parseInt(timeToWork.value) * 60;
+    timer = setInterval(startTimerWork, 1000);
+  } else {
+    timer = setInterval(startTimerWork, 1000);
+  }
 })
 
 stopBtn.addEventListener('click', function() {
   clearInterval(timer);
   startBtn.disabled = false;
+  workStatus = false;
 })
 
 deleteBtn.addEventListener('click', function() {
