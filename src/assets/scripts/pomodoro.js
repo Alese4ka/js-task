@@ -32,6 +32,7 @@ deleteBtn.addEventListener('click', function() {
   timeMinute = parseInt(timeToWork.value) * 60;
   timerClock.innerHTML = `${timeToWork.value}:00`;
   startBtn.disabled = false;
+  workStatus = true;
 })
 
 function startTimerWork(){
@@ -41,7 +42,8 @@ function startTimerWork(){
   if (timeMinute <= 0) {
     clearInterval(timer);
     sound.play();
-    timeMinuteBreak = parseInt(timeToBreak.value) * 60;
+    workStatus = true;
+    timeMinute = parseInt(timeToBreak.value) * 60;
     timer = setInterval(startTimerBreak, 1000);
   } else if (seconds < 10) {
     let strTimer = `${minutes}:0${seconds}`;
@@ -55,9 +57,9 @@ function startTimerWork(){
 }
 
 function startTimerBreak() {
-  seconds = Math.floor(timeMinuteBreak%60);
-  minutes = Math.floor(timeMinuteBreak/60%60);
-  if (timeMinuteBreak <= 0) {
+  seconds = Math.floor(timeMinute%60);
+  minutes = Math.floor(timeMinute/60%60);
+  if (timeMinute <= 0) {
     clearInterval(timer);
     sound.play();
     timeMinute = parseInt(timeToWork.value) * 60;
@@ -70,7 +72,7 @@ function startTimerBreak() {
     let strTimer = `${minutes}:${seconds}`;
     timerClock.innerHTML = strTimer;
   }
-  --timeMinuteBreak;
+  --timeMinute;
 }
 
 
