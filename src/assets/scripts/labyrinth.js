@@ -73,16 +73,29 @@ if (event.key == 39){
 smile[0].classList.add('smile');
 finish[0].classList.add('finish');
 
-
-
-
-
 document.addEventListener('keydown', (e) => {
-  if(e.code === 'ArrowRight' || e.code === 'KeyK') {
-    console.log('пауза')
-    }
-    else {
-      console.log('паузаноу')
-    }
-
-  })
+  if(e.code === 'ArrowRight') {
+    smile[0].classList.remove('smile');
+    //sk = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+    smile = [document.querySelector('[posX = "' + (+coordinatesSmile[0] + 1) + '"][posY = "' + coordinatesSmile[1] + '"]')];
+    smile[0].classList.add('smile');
+  }
+  else if (e.code === 'ArrowLeft') {
+    smile[0].classList.remove('smile');
+   //sk1 = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+    smile = [document.querySelector('[posX = "' + (+coordinatesSmile[0] - 1) + '"][posY = "' + coordinatesSmile[1] + '"]')];
+    smile[0].classList.add('smile');
+  }
+  else if (e.code === 'ArrowUp') {
+   //sk1 = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+    smile[0].classList.remove('smile');
+    smile = [document.querySelector('[posX = "' + coordinatesSmile[0] + '"][posY = "' + (+coordinatesSmile[1] + 1) + '"]')];
+    smile[0].classList.add('smile');
+  }
+  else if (e.code === 'ArrowDown') {
+    smile[0].classList.remove('smile');
+    //sk1 = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+     smile = [document.querySelector('[posX = "' + coordinatesSmile[0] + '"][posY = "' + (+coordinatesSmile[1] - 1) + '"]')];
+     smile[0].classList.add('smile');
+   } 
+})
