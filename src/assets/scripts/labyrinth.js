@@ -41,21 +41,48 @@ let finish = [document.querySelector('[posX = "' + coordinatesFinish[0] + '"][po
 
 while (finish[0].classList.contains('smile')) {
   let coordinatesFinish = generateCellFinish();
-  let finish = [document.querySelector('[posX = "' + coordinatesFinish[0] + '"][posY = "' + coordinatesFinish[1] + '"]')];
+  finish = [document.querySelector('[posX = "' + coordinatesFinish[0] + '"][posY = "' + coordinatesFinish[1] + '"]')];
 }
+/*
+document.addEventListener('keydown', myF);
+
+
+
+function myF(event) {
+
+    sk = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+  
+    sk = [document.querySelector('[posX = "' + (+coordinatesSmile[0] + 1) + '"][posY = "' + coordinatesSmile[1] + '"]')];
+    smile[0].classList.remove('smile');
+    sk[0].classList.add('smile');
+
+
+  
+  console.log(coordinatesSmile[0])  
+  console.log('left')
+  console.log(smile)
+if (event.key == 39){
+  console.log('right')
+}
+      
+    
+  
+};
+*/
 
 smile[0].classList.add('smile');
 finish[0].classList.add('finish');
 
 
-/*window.addEventListener("keydown", function(event) {
-  if (event.key == 37)
-    console.log('left')
-});
-window.addEventListener("keyup", function(event) {
-  if (event.key == 39)
-  console.log('right')
-});
-*/
 
 
+
+document.addEventListener('keydown', (e) => {
+  if(e.code === 'ArrowRight' || e.code === 'KeyK') {
+    console.log('пауза')
+    }
+    else {
+      console.log('паузаноу')
+    }
+
+  })
