@@ -46,6 +46,7 @@ while (finish[0].classList.contains('smile')) {
 
 smile[0].classList.add('smile');
 finish[0].classList.add('finish');
+cell[1].classList.toggle('black-cell') 
 
 document.addEventListener('keydown', (e) => {
   if(e.code === 'ArrowRight') {
@@ -53,9 +54,9 @@ document.addEventListener('keydown', (e) => {
     smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
     smile = [document.querySelector('[posX = "' + (+smileMove[0] + 1) + '"][posY = "' + smileMove[1] + '"]')];
     smile[0].classList.add('smile');
-    console.log(smile[0])
-    if(smile[0].getAttribute('posX') == 10){
-       alert('erorr')
+    if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
+      alert('Вы выиграли')
+      cell[30].classList.add('black-cell') // функция которая рандомно будет создавать ячейки
     }
   }
   else if (e.code === 'ArrowLeft') {
@@ -63,19 +64,38 @@ document.addEventListener('keydown', (e) => {
     smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
     smile = [document.querySelector('[posX = "' + (+smileMove[0] - 1) + '"][posY = "' + smileMove[1] + '"]')];
     smile[0].classList.add('smile');
+    if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
+      alert('Вы выиграли')
+      cell[30].classList.add('black-cell') 
+    }
   }
   else if (e.code === 'ArrowUp') {
     smile[0].classList.remove('smile');
     smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
     smile = [document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] + 1) + '"]')];
     smile[0].classList.add('smile');
+    if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
+      alert('Вы выиграли')
+      cell[30].classList.add('black-cell') 
+    }
   }
   else if (e.code === 'ArrowDown') {
     smile[0].classList.remove('smile');
     smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
     smile = [document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] - 1) + '"]')];
     smile[0].classList.add('smile');
-   } 
+    if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
+      alert('Вы выиграли')
+      cell[30].classList.add('black-cell') 
+    }
+  } 
 })
 
-// подумать как сделать чтобы смайл не скрывался за полем
+// подумать как сделать если смайл сталкивается с границей чтобы был конец игры
+// после выигрыша добавлять уровни
+// каждую новую игру добавлять черные ячейки
+// сделать чтобы при достижении финиша появлялаьс надпись выиграли и уровень увеличивался
+
+
+
+
