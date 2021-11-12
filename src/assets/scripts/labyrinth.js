@@ -43,32 +43,6 @@ while (finish[0].classList.contains('smile')) {
   let coordinatesFinish = generateCellFinish();
   finish = [document.querySelector('[posX = "' + coordinatesFinish[0] + '"][posY = "' + coordinatesFinish[1] + '"]')];
 }
-/*
-document.addEventListener('keydown', myF);
-
-
-
-function myF(event) {
-
-    sk = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
-  
-    sk = [document.querySelector('[posX = "' + (+coordinatesSmile[0] + 1) + '"][posY = "' + coordinatesSmile[1] + '"]')];
-    smile[0].classList.remove('smile');
-    sk[0].classList.add('smile');
-
-
-  
-  console.log(coordinatesSmile[0])  
-  console.log('left')
-  console.log(smile)
-if (event.key == 39){
-  console.log('right')
-}
-      
-    
-  
-};
-*/
 
 smile[0].classList.add('smile');
 finish[0].classList.add('finish');
@@ -76,26 +50,32 @@ finish[0].classList.add('finish');
 document.addEventListener('keydown', (e) => {
   if(e.code === 'ArrowRight') {
     smile[0].classList.remove('smile');
-    //sk = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
-    smile = [document.querySelector('[posX = "' + (+coordinatesSmile[0] + 1) + '"][posY = "' + coordinatesSmile[1] + '"]')];
+    smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+    smile = [document.querySelector('[posX = "' + (+smileMove[0] + 1) + '"][posY = "' + smileMove[1] + '"]')];
     smile[0].classList.add('smile');
+    console.log(smile[0])
+    if(smile[0].getAttribute('posX') == 10){
+       alert('erorr')
+    }
   }
   else if (e.code === 'ArrowLeft') {
     smile[0].classList.remove('smile');
-   //sk1 = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
-    smile = [document.querySelector('[posX = "' + (+coordinatesSmile[0] - 1) + '"][posY = "' + coordinatesSmile[1] + '"]')];
+    smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+    smile = [document.querySelector('[posX = "' + (+smileMove[0] - 1) + '"][posY = "' + smileMove[1] + '"]')];
     smile[0].classList.add('smile');
   }
   else if (e.code === 'ArrowUp') {
-   //sk1 = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
     smile[0].classList.remove('smile');
-    smile = [document.querySelector('[posX = "' + coordinatesSmile[0] + '"][posY = "' + (+coordinatesSmile[1] + 1) + '"]')];
+    smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+    smile = [document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] + 1) + '"]')];
     smile[0].classList.add('smile');
   }
   else if (e.code === 'ArrowDown') {
     smile[0].classList.remove('smile');
-    //sk1 = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
-     smile = [document.querySelector('[posX = "' + coordinatesSmile[0] + '"][posY = "' + (+coordinatesSmile[1] - 1) + '"]')];
-     smile[0].classList.add('smile');
+    smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
+    smile = [document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] - 1) + '"]')];
+    smile[0].classList.add('smile');
    } 
 })
+
+// подумать как сделать чтобы смайл не скрывался за полем
