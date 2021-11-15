@@ -49,6 +49,7 @@ finish[0].classList.add('finish');
 cell[1].classList.toggle('black-cell') 
 
 document.addEventListener('keydown', (e) => {
+  e.preventDefault();
   if(e.code === 'ArrowRight') {
     smile[0].classList.remove('smile');
     smileMove = [smile[0].getAttribute('posX'), smile[0].getAttribute('posY')];
@@ -56,7 +57,7 @@ document.addEventListener('keydown', (e) => {
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
       alert('Вы выиграли')
-      cell[30].classList.add('black-cell') // функция которая рандомно будет создавать ячейки
+      levelUp();
     }
   }
   else if (e.code === 'ArrowLeft') {
@@ -66,7 +67,7 @@ document.addEventListener('keydown', (e) => {
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
       alert('Вы выиграли')
-      cell[30].classList.add('black-cell') 
+      levelUp();
     }
   }
   else if (e.code === 'ArrowUp') {
@@ -76,7 +77,7 @@ document.addEventListener('keydown', (e) => {
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
       alert('Вы выиграли')
-      cell[30].classList.add('black-cell') 
+      levelUp();
     }
   }
   else if (e.code === 'ArrowDown') {
@@ -86,16 +87,17 @@ document.addEventListener('keydown', (e) => {
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
       alert('Вы выиграли')
-      cell[30].classList.add('black-cell') 
+      levelUp();
     }
   } 
 })
 
-// подумать как сделать если смайл сталкивается с границей чтобы был конец игры
+function levelUp() {
+  let rand = Math.round(Math.random() * (100-1) + 1);
+  cell[rand].classList.add('black-cell')
+  /*smile[10].classList.toggle('smile'); */
+} 
+
+// подумать как сделать если смайл сталкивается с границей и с черным чтобы был конец игры
 // после выигрыша добавлять уровни
-// каждую новую игру добавлять черные ячейки
-// сделать чтобы при достижении финиша появлялаьс надпись выиграли и уровень увеличивался
-
-
-
-
+// чтобы появлялся смайл в новой игре
