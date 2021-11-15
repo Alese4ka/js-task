@@ -1,3 +1,4 @@
+const countLevel = document.querySelector('.labyrinth_level');
 let field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
@@ -56,8 +57,14 @@ document.addEventListener('keydown', (e) => {
     smile = [document.querySelector('[posX = "' + (+smileMove[0] + 1) + '"][posY = "' + smileMove[1] + '"]')];
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
-      alert('Вы выиграли')
+      alert('Вы выиграли');
+      smile[0].classList.remove('smile');
+      smile = [document.querySelector('[posX = "10"][posY = "10"]')];
+      smile[0].classList.add('smile');
       levelUp();
+    }
+    else if (smile[0].getAttribute('posX') == cell[0].getAttribute('10')) {
+      console.log('jjjj')
     }
   }
   else if (e.code === 'ArrowLeft') {
@@ -67,7 +74,13 @@ document.addEventListener('keydown', (e) => {
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
       alert('Вы выиграли')
+      smile[0].classList.remove('smile');
+      smile = [document.querySelector('[posX = "10"][posY = "10"]')];
+      smile[0].classList.add('smile');
       levelUp();
+    }
+    else if (smile[0].getAttribute('posX') == 10) {
+      alert('Вы проиграли')
     }
   }
   else if (e.code === 'ArrowUp') {
@@ -76,7 +89,10 @@ document.addEventListener('keydown', (e) => {
     smile = [document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] + 1) + '"]')];
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
-      alert('Вы выиграли')
+      alert('Вы выиграли');
+      smile[0].classList.remove('smile');
+      smile = [document.querySelector('[posX = "10"][posY = "10"]')];
+      smile[0].classList.add('smile');
       levelUp();
     }
   }
@@ -86,7 +102,10 @@ document.addEventListener('keydown', (e) => {
     smile = [document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] - 1) + '"]')];
     smile[0].classList.add('smile');
     if (smile[0].getAttribute('posX') == finish[0].getAttribute('posX') && smile[0].getAttribute('posY') == finish[0].getAttribute('posY')) {
-      alert('Вы выиграли')
+      alert('Вы выиграли');
+      smile[0].classList.remove('smile');
+      smile = [document.querySelector('[posX = "10"][posY = "10"]')];
+      smile[0].classList.add('smile');
       levelUp();
     }
   } 
@@ -94,10 +113,15 @@ document.addEventListener('keydown', (e) => {
 
 function levelUp() {
   let rand = Math.round(Math.random() * (100-1) + 1);
-  cell[rand].classList.add('black-cell')
-  /*smile[10].classList.toggle('smile'); */
+  if (rand == 10){
+    let rand = Math.round(Math.random() * (100-1) + 1);
+    cell[rand].classList.add('black-cell');
+  }
+  cell[rand].classList.add('black-cell');
+  let a = parseInt(1);
+  let b = parseInt(countLevel.innerHTML);
+  countLevel.innerHTML = ` ${a + b}`;
 } 
 
 // подумать как сделать если смайл сталкивается с границей и с черным чтобы был конец игры
-// после выигрыша добавлять уровни
-// чтобы появлялся смайл в новой игре
+// сделать так чтобы черные ячейки не могли появляться в том месте где у же есть черный квадрат
