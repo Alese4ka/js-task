@@ -1,5 +1,5 @@
 const countLevel = document.querySelector('.labyrinth_level');
-const startBtn = document.querySelector('.btn');
+
 let field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
@@ -28,24 +28,19 @@ let smile;
 let finish;
 let coordinatesSmile = generateCellSmile();
 let coordinatesFinish = generateCellFinish();
+let rand = Math.round(Math.random() * (100-1) + 1);
 
-startBtn.addEventListener('click', () => c());
+smile = document.querySelector('[posX = "' + coordinatesSmile[0] + '"][posY = "' + coordinatesSmile[1] + '"]');
+finish = document.querySelector('[posX = "' + coordinatesFinish[0] + '"][posY = "' + coordinatesFinish[1] + '"]');
 
-function c(){
-  smile = document.querySelector('[posX = "' + coordinatesSmile[0] + '"][posY = "' + coordinatesSmile[1] + '"]');
-  console.log('create0')
+while (finish.classList.contains('smile')) {
+  let coordinatesFinish = generateCellFinish();
   finish = document.querySelector('[posX = "' + coordinatesFinish[0] + '"][posY = "' + coordinatesFinish[1] + '"]');
-  //cellBlack = document.querySelector('[posX = "' + coordinatesBlack[0] + '"][posY = "' + coordinatesBlack[1] + '"]');
-  smile.classList.add('smile');
-  while (finish.classList.contains('smile')) {
-    let coordinatesFinish = generateCellFinish();
-    finish = document.querySelector('[posX = "' + coordinatesFinish[0] + '"][posY = "' + coordinatesFinish[1] + '"]');
-  }
-  finish.classList.add('finish');
-  let rand = Math.round(Math.random() * (100-1) + 1);
-  cell[rand].classList.add('black-cell');
-
 }
+
+smile.classList.add('smile');
+finish.classList.add('finish');
+cell[rand].classList.add('black-cell');
 
 function generateCellSmile() {
   let posX = Math.round(Math.random() * (10-1) + 1);
@@ -153,47 +148,30 @@ document.addEventListener('keydown', (e) => {
 
 function newGame() {
   countLevel.innerHTML = ` 1`;
-  //c1()
-  console.log('gggg')
   let rand = Math.round(Math.random() * (100-1) + 1);
   cell[rand].classList.add('black-cell');
+  let coordinatesFinish = generateCellFinish();
+  finish.classList.remove('finish');
+  finish = document.querySelector('[posX = "' + coordinatesFinish[0] + '"][posY = "' + coordinatesFinish[1] + '"]');
+  finish.classList.add('finish');
   for(let i = 1; i < 101; i++) {
-    cell[i].classList.remove('black-cell')
+    cell[i].classList.remove('black-cell');
     if(!cell[i].classList.contains('black-cell')){
       cell[rand].classList.add('black-cell');
     }
-    
-    
-  }
-  
-    //c()
-    
-  }
-
-  function c1(){
-    console.log('hhh')
-    let rand = Math.round(Math.random() * (100-1) + 1);
-  cell[rand].classList.add('black-cell');
-  }
-  //smile.classList.remove('smile');
-  //smile = document.querySelector('[posX = "10"][posY = "10"]');
-  //smile.classList.add('smile');
-  //finish.classList.remove('finish');
-  //cell.classList.remove('black-cell')
-  //finish = document.querySelector('[posX = "5"][posY = "5"]');
-  //finish.classList.add('finish');
-  
-  //cell.classList.remove('black-cell');//как быть с рандомными черными клетками?*/
+  }    
+}
 
 function levelUp() {
   let rand = Math.round(Math.random() * (100-1) + 1);
+  if (rand === 9){
+    cell[rand].classList.add('black-cell');
+  }
   cell[rand].classList.add('black-cell');
   let a = parseInt(1);
   let b = parseInt(countLevel.innerHTML);
   countLevel.innerHTML = ` ${a + b}`;
-  console.log('lup');
 }
 
 // подумать как сделать если смайл сталкивается с границей 
-// после того как столкнулся с черным -  обновить, обновляет но что делать с черными клетками
 // сделать так чтобы черные ячейки не могли появляться в том месте, где у же есть черный квадрат+-
