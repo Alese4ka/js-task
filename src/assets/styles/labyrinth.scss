@@ -1,0 +1,33 @@
+p {
+  font-size: 2rem;
+  background-color: rgba(245, 245, 220, 0.235);
+  width: 31.25rem;
+  text-align: center;
+  margin: 0 auto;
+}
+.field {
+  width: 31.25rem;
+  height: 31.25rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: beige;
+  margin-bottom: 20rem;
+  .cell {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+  .black-cell {
+    width: 3.125rem;
+    height: 3.125rem;
+    background-color: black;
+  }
+  .smile {
+    background: url("../img/smile.png") no-repeat;
+    background-size: cover;
+  }
+  .finish {
+    background: url("../img/finish.png") no-repeat;
+    background-size: cover;
+  }
+}
