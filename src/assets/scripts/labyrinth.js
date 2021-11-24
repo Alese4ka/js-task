@@ -57,6 +57,11 @@ function generateCellFinish() {
 document.addEventListener('keydown', (e) => {
   e.preventDefault();
   if(e.code === 'ArrowRight') {
+    if (smile.getAttribute('posX') == 10){
+      alert('Вы проиграли');
+      console.log('Вы проиграли');
+      newGame();
+    }
     smile.classList.remove('smile');
     smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
     smile = document.querySelector('[posX = "' + (+smileMove[0] + 1) + '"][posY = "' + smileMove[1] + '"]');
@@ -72,13 +77,13 @@ document.addEventListener('keydown', (e) => {
       smile.classList.add('smile');
       levelUp();
     }
-    else if (smile.getAttribute('posX') > 10){
-      alert('Вы проиграли');
-      console.log('Вы проиграли');
-      newGame();
-    }
   }
   else if (e.code === 'ArrowLeft') {
+    if (smile.getAttribute('posX') == 1){
+      alert('Вы проиграли2');
+      console.log('Вы проиграли2');
+      newGame();
+    }
     smile.classList.remove('smile');
     smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
     smile = document.querySelector('[posX = "' + (+smileMove[0] - 1) + '"][posY = "' + smileMove[1] + '"]');
@@ -94,13 +99,13 @@ document.addEventListener('keydown', (e) => {
       smile.classList.add('smile');
       levelUp();
     }
-    else if (smile.getAttribute('posX') == 1){
-      alert('Вы проиграли2');
-      console.log('Вы проиграли2');
-      newGame();
-    }
   }
   else if (e.code === 'ArrowUp') {
+    if (smile.getAttribute('posY') == 10){
+      alert('Вы проиграли');
+      console.log('Вы проиграли');
+      newGame();
+    }
     smile.classList.remove('smile');
     smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
     smile = document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] + 1) + '"]');
@@ -116,13 +121,13 @@ document.addEventListener('keydown', (e) => {
       smile.classList.add('smile');
       levelUp();
     }
-    else if (!smile.classList.contains('cell')){
+  }
+  else if (e.code === 'ArrowDown') {
+    if (smile.getAttribute('posY') == 1){
       alert('Вы проиграли');
       console.log('Вы проиграли');
       newGame();
     }
-  }
-  else if (e.code === 'ArrowDown') {
     smile.classList.remove('smile');
     smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
     smile = document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] - 1) + '"]');
@@ -137,11 +142,6 @@ document.addEventListener('keydown', (e) => {
       smile = document.querySelector('[posX = "10"][posY = "10"]');
       smile.classList.add('smile');
       levelUp();
-    }
-    else if (!smile.classList.contains('cell')){
-      alert('Вы проиграли');
-      console.log('Вы проиграли');
-      newGame();
     }
   } 
 })
@@ -172,6 +172,3 @@ function levelUp() {
   let b = parseInt(countLevel.innerHTML);
   countLevel.innerHTML = ` ${a + b}`;
 }
-
-// подумать как сделать если смайл сталкивается с границей 
-// сделать так чтобы черные ячейки не могли появляться в том месте, где у же есть черный квадрат+-
