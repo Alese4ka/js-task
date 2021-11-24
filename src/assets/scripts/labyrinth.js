@@ -94,9 +94,9 @@ document.addEventListener('keydown', (e) => {
       smile.classList.add('smile');
       levelUp();
     }
-    else if (!smile.classList.contains('cell')){
-      alert('Вы проиграли');
-      console.log('Вы проиграли');
+    else if (smile.getAttribute('posX') == 1){
+      alert('Вы проиграли2');
+      console.log('Вы проиграли2');
       newGame();
     }
   }
