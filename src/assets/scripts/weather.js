@@ -1,4 +1,5 @@
 let geoCity = document.querySelector('#result');
+let city;
 
 ymaps.ready(init);
 
@@ -8,14 +9,16 @@ function init() {
 })
 .then(function(result){
     let components = result.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.Address.Components;
-    geoCity.innerHTML = `${components[2].name}`;
+    //geoCity.innerHTML = `${components[2].name}`;
+    city=`${components[2].name}`;
+    geoCity.innerHTML = city;
 })
 .catch(function () {
     //Обрабатываем ошибки
 });
 }
-
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=ea7f2ec7419b33064accc22aac5169a6')
+console.log(city)
+fetch('http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ea7f2ec7419b33064accc22aac5169a6')
 .then(function (resp) {return resp.json()})
 .then(function (data) {
     document.querySelector('.weather__city').innerHTML = data.name;
