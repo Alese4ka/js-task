@@ -55,7 +55,7 @@ function generateCellFinish() {
 }
 
 document.addEventListener('keydown', (e) => {
-  e.preventDefault();
+  //e.preventDefault();
   if(e.code === 'ArrowRight') {
     if (smile.getAttribute('posX') == 10){
       alert('Вы проиграли');
