@@ -1,8 +1,10 @@
 let wrapper = document.querySelector('.weather');
 let otherCity = document.querySelector('.weather__other-city');
-let switchTemp = document.querySelector('.weather__switch');
+let switchTemp = document.querySelector('.weather__switch-input');
 let weatherCity = document.querySelector('.weather__city');
 let weatherTemp = document.querySelector('.weather__temp');
+let tempC = document.querySelector('.weather__temp-C');
+let tempF = document.querySelector('.weather__temp-F');
 let city;
 
 ymaps.ready(init);
@@ -57,14 +59,16 @@ switchTemp.addEventListener('click', () => changeTemp());
 let switchStatus = true;
 
 function changeTemp() {
-    if(switchStatus == true){
-        console.log(weatherTemp.innerHTML)
+    if(switchStatus == true) {
         weatherTemp.innerHTML = Math.round(Number(weatherTemp.innerHTML) + 273);
+        tempF.style.display = 'block';
+        tempC.style.display = 'none';
         switchStatus = false;
     }
     else if(switchStatus == false) {
-        console.log(weatherTemp.innerHTML)
         weatherTemp.innerHTML = Math.round(Number(weatherTemp.innerHTML) - 273);
+        tempF.style.display = 'none';
+        tempC.style.display = 'block';
         switchStatus = true;
     }
 }

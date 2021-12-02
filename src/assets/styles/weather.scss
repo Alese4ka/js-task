@@ -27,6 +27,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    .weather__temp-C,
+    .weather__temp-F {
+      @extend %font;
+      padding: 0;
+    }
+    .weather__temp-F {
+      display: none;
+      padding-right: 0.5rem;
+    }
   }
   &__switch {
     position: relative;
