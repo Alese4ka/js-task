@@ -18,8 +18,9 @@
     @extend %font;
   }
   &__other-city {
+    display: block;
+    margin: 0 auto;
     font-size: 1rem;
-    margin: 0 1.5rem 0 2.75rem;
     padding: 0.5rem 0.125rem 0.5rem 0.5rem;
   }
   &__switch-temp {

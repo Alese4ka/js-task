@@ -25,24 +25,12 @@ function init() {
 
 wrapper.onkeyup = e => {
     if (e.key == 'Enter') {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${otherCity.value}&appid=ea7f2ec7419b33064accc22aac5169a6`)
-        .then(function (resp) {return resp.json()})
-        .then(function (data) {
-            document.querySelector('.weather__city').innerHTML = data.name;
-            document.querySelector('.weather__temp').innerHTML = Math.round(data.main.temp - 273);
-            document.querySelector('.weather__info').textContent = data.weather[0]['description'];
-            document.querySelector('.weather__icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
-            otherCity.value = '';
-            switchStatus == false;
-        })
-        .catch(function () {
-            //Обрабатываем ошибки
-        });
+        getWeather(otherCity.value)
     }
 }
 
-function getWeather() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ea7f2ec7419b33064accc22aac5169a6`)
+function getWeather(town) {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${town}&appid=ea7f2ec7419b33064accc22aac5169a6`)
     .then(function (resp) {return resp.json()})
     .then(function (data) {
         document.querySelector('.weather__city').innerHTML = data.name;
