@@ -4,3 +4,4 @@ import './carousel.js';
 import './calculator.js';
 import './pomodoro.js';
 import './labyrinth.js';
+import './weather.js';

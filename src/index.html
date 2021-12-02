@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU&apikey=fd1c172b-66bc-4a4f-8772-89e7266278e0"
+    type="text/javascript"></script>
   <title>CAROUSEL JAVASCRIPT</title>
 </head>
 
@@ -128,8 +130,24 @@
       </audio>
     </section>
 
+    <section class="weather">
+      <div class="weather__city"></div>
+      <input class="weather__other-city" type="text" placeholder="Введите свой город" size="20">
+      <div class="weather__switch-temp">
+        <div class="weather__temp"></div>
+        <div class="weather__temp-C">C&deg;</div>
+        <div class="weather__temp-F">F</div>
+        <label class="weather__switch">
+          <input class="weather__switch-input" type="checkbox">
+          <span class="weather__slider-round"></span>
+        </label>
+      </div>
+      <div class="weather__info"></div>
+      <div class="weather__icon"></div>
+    </section>
+
     <section class="labyrinth">
-      <p>Level<span class="labyrinth_level"> 1</span></p>
+      <p class="labyrinth__level-p">Level<span class="labyrinth__level"> 1</span></p>
     </section>
   </main>
 </body>

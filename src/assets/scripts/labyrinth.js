@@ -1,4 +1,5 @@
-const countLevel = document.querySelector('.labyrinth_level');
+const labyrinth = document.querySelector('.labyrinth');
+const countLevel = document.querySelector('.labyrinth__level');
 
 let field = document.createElement('div');
 document.body.appendChild(field);
@@ -54,8 +55,106 @@ function generateCellFinish() {
   return [posX, posY];
 }
 
-document.addEventListener('keydown', (e) => {
-  e.preventDefault();
+field.addEventListener('click', () => start());
+
+function start(){
+  field.style.border = '0.05rem solid green';
+  addEventListener('keydown', (e) => {
+    field.style.border = 'none';
+    e.preventDefault();
+    if(e.code === 'ArrowRight') {
+      if (smile.getAttribute('posX') == 10){
+        alert('Вы проиграли');
+        console.log('Вы проиграли');
+        newGame();
+      }
+      smile.classList.remove('smile');
+      smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
+      smile = document.querySelector('[posX = "' + (+smileMove[0] + 1) + '"][posY = "' + smileMove[1] + '"]');
+      smile.classList.add('smile');
+      if (smile.classList.contains('black-cell')) {
+        alert('Вы проиграли');
+        newGame();
+      }
+      else if (smile.getAttribute('posX') == finish.getAttribute('posX') && smile.getAttribute('posY') == finish.getAttribute('posY')) {
+        alert('Вы выиграли');
+        smile.classList.remove('smile');
+        smile = document.querySelector('[posX = "10"][posY = "10"]');
+        smile.classList.add('smile');
+        levelUp();
+      }
+    }
+    else if (e.code === 'ArrowLeft') {
+      if (smile.getAttribute('posX') == 1){
+        alert('Вы проиграли2');
+        console.log('Вы проиграли2');
+        newGame();
+      }
+      smile.classList.remove('smile');
+      smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
+      smile = document.querySelector('[posX = "' + (+smileMove[0] - 1) + '"][posY = "' + smileMove[1] + '"]');
+      smile.classList.add('smile');
+      if (smile.classList.contains('black-cell')) {
+        alert('Вы проиграли');
+        newGame();
+      }
+      else if (smile.getAttribute('posX') == finish.getAttribute('posX') && smile.getAttribute('posY') == finish.getAttribute('posY')) {
+        alert('Вы выиграли')
+        smile.classList.remove('smile');
+        smile = document.querySelector('[posX = "10"][posY = "10"]');
+        smile.classList.add('smile');
+        levelUp();
+      }
+    }
+    else if (e.code === 'ArrowUp') {
+      if (smile.getAttribute('posY') == 10){
+        alert('Вы проиграли');
+        console.log('Вы проиграли');
+        newGame();
+      }
+      smile.classList.remove('smile');
+      smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
+      smile = document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] + 1) + '"]');
+      smile.classList.add('smile');
+      if (smile.classList.contains('black-cell')) {
+        alert('Вы проиграли');
+        newGame();
+      }
+      else if (smile.getAttribute('posX') == finish.getAttribute('posX') && smile.getAttribute('posY') == finish.getAttribute('posY')) {
+        alert('Вы выиграли');
+        smile.classList.remove('smile');
+        smile = document.querySelector('[posX = "10"][posY = "10"]');
+        smile.classList.add('smile');
+        levelUp();
+      }
+    }
+    else if (e.code === 'ArrowDown') {
+      if (smile.getAttribute('posY') == 1){
+        alert('Вы проиграли');
+        console.log('Вы проиграли');
+        newGame();
+      }
+      smile.classList.remove('smile');
+      smileMove = [smile.getAttribute('posX'), smile.getAttribute('posY')];
+      smile = document.querySelector('[posX = "' + smileMove[0] + '"][posY = "' + (+smileMove[1] - 1) + '"]');
+      smile.classList.add('smile');
+      if (smile.classList.contains('black-cell')) {
+        alert('Вы проиграли');
+        newGame();
+      }
+      else if (smile.getAttribute('posX') == finish.getAttribute('posX') && smile.getAttribute('posY') == finish.getAttribute('posY')) {
+        alert('Вы выиграли');
+        smile.classList.remove('smile');
+        smile = document.querySelector('[posX = "10"][posY = "10"]');
+        smile.classList.add('smile');
+        levelUp();
+      }
+    } 
+  })
+}
+/*
+h.addEventListener('keydown', (e) => {
+  //e.preventDefault();
   if(e.code === 'ArrowRight') {
     if (smile.getAttribute('posX') == 10){
       alert('Вы проиграли');
@@ -144,7 +243,7 @@ document.addEventListener('keydown', (e) => {
       levelUp();
     }
   } 
-})
+})*/
 
 function newGame() {
   countLevel.innerHTML = ` 1`;
